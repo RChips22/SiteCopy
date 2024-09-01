@@ -27,6 +27,7 @@ Help = r"""
  Stop Copy: Ctrl + C
 """
 
+proxies = {http:os.environ['http_proxy'],https:os.environ['https_proxy']}
 urllib3.disable_warnings()
 header = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.108 Safari/537.36",}
 
@@ -42,7 +43,7 @@ def parse_args():
 # Get the page source
 def ExtractContent(url):
 	try:
-		raw = requests.get(url, headers = header, timeout=10, allow_redirects=True, verify=False)
+		raw = requests.get(url, headers = header, timeout=10, allow_redirects=True, verify=False,proxies=proxies)
 		raw = raw.content
 		if raw != "":
 			return raw

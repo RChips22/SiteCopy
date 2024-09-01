@@ -2,3 +2,4 @@ bs4
 Path
 asyncio
 argparse
+requests[socks]
